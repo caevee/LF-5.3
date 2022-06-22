@@ -1,0 +1,52 @@
+@startuml Lernjob 3.5
+
+!theme reddress-darkgreen
+scale 2
+skinparam {
+    TitleFontColor #FFFFFF
+    Shadowing false
+    ArrowFontColor #FFFFFF
+    ArrowFontSize 15
+    ArrowColor #fd79a8
+    roundcorner 10
+    BackgroundColor #FFFFFFF
+    ClassHeaderBackgroundColor #9E1981
+    ClassBackgroundColor #FFFFFF
+    ClassAttributeFontColor #464646
+    ObjectAttributeFontColor #FFFFFF
+    ObjectBackgroundColor #636e72
+}
+
+rectangle {
+    ' Classes
+    class Toaster {
+        -farbe: string
+        -schaechte: int
+        -toastzeit: int 
+        -anzahl_toasts: int
+        -toasts_zustand: int
+
+        +toast_reintun(a: int)
+        +toasten()
+        +toast_auswerfen()
+        +zeit_einstellen(s: int)
+    }
+    class SuperToaster {
+        -temperatur: int
+        +toasten()
+    }
+
+    ' Inheritance
+    Toaster <|-- SuperToaster
+
+    ' Object creations
+    object meinToaster {
+        farbe = "Rot"
+        schaechte = 2
+    }
+
+
+    ' Object associations
+    Toaster <.. meinToaster
+}
+@enduml

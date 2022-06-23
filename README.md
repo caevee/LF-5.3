@@ -7,7 +7,7 @@
 * TypeScript = TypeScript Codebase für die Lernsituation
 * UML = Zeichnung sowie PlantUML Klassen-/Objektdiagramm
 
-### How to run
+# How to run
 
 ## Python
 Install Python first

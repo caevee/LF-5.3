@@ -22,14 +22,15 @@ rectangle {
     class Toaster {
         -farbe: string
         -schaechte: int
-        -toastzeit: int 
-        -anzahl_toasts: int
-        -toasts_zustand: int
+        #toastzeit: int 
+        #anzahlToasts: int
+        #toastsZustand: int
 
-        +toast_reintun(a: int)
+        +toastReintun(a: int)
         +toasten()
-        +toast_auswerfen()
-        +zeit_einstellen(s: int)
+        +toastAuswerfen()
+        +zeitEinstellen(s: int)
+        +getFarbe(): string
     }
     class SuperToaster {
         -temperatur: int
@@ -44,9 +45,13 @@ rectangle {
         farbe = "Rot"
         schaechte = 2
     }
-
+    object meinSuperToaster {
+        farbe = "Blau"
+        schaechte = 3
+    }
 
     ' Object associations
     Toaster <.. meinToaster
+    Toaster <.. meinSuperToaster
 }
 @enduml

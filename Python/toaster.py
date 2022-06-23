@@ -19,7 +19,6 @@ class Toaster:
     def toast_reintun(self, anzahl):
         if anzahl <= self._schaechte:
             self._anzahl_toasts = anzahl
-            self._toasts_zustand = 0
         else:
             print("Nicht genug Platz!")
 
@@ -34,6 +33,7 @@ class Toaster:
     def toast_auswerfen(self):
         print(f"{self._anzahl_toasts} Toast ausgeworfen. Toaster ist leer.")
         self._anzahl_toasts = 0
+        self._toasts_zustand = 0
 
     def zeit_einstellen(self, zeit):
         self._toastzeit = zeit

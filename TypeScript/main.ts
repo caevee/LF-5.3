@@ -25,15 +25,19 @@ while(1) {
 
 function toasterAnlegen(): void {
     const response: string = prompt("SuperToaster? (y/n)")!.toLowerCase()
-    const farbe: string = prompt("Welche Farbe hat der Toaster?\n")!
-    const schaechte = prompt("Wieviele Schächte hat der Toaster?\n")!
+    const farbe: string = prompt("Welche Farbe hat der Toaster?\n")! ?? "Weiß"
+    //const farbe: string = prompt("Welche Farbe hat der Toaster?\n")!
+    const schaechte = prompt("Wieviele Schächte hat der Toaster?\n")! ?? 2
+    //const schaechte = prompt("Wieviele Schächte hat der Toaster?\n")!
     let newToaster
     switch(response) {
         case "y":
-            newToaster = new Toaster(farbe ? farbe : "Weiß", +schaechte ? +schaechte : 2)
+            newToaster = new Toaster(farbe, +schaechte)
+            //newToaster = new Toaster(farbe ? farbe : "Weiß", +schaechte ? +schaechte : 2)
             break;
         default:
-            newToaster = new SuperToaster(farbe ? farbe : "Weiß", +schaechte ? +schaechte : 2)
+            newToaster = new SuperToaster(farbe, +schaechte)
+            //newToaster = new SuperToaster(farbe ? farbe : "Weiß", +schaechte ? +schaechte : 2)
             break;
     }
     toaster.push(newToaster)

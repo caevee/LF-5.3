@@ -14,8 +14,8 @@ toaster = []
 
 def toasterAnlegen():
     response = input("SuperToaster? (y/n)\n").lower()
-    farbe = input("Welche Farbe hat der Toaster?\n")
-    schaechte = int(input("Wieviele Schächte hat der Toaster?\n"))
+    farbe = (input("Welche Farbe hat der Toaster?\n") or "Weiß")
+    schaechte = (input("Wieviele Schächte hat der Toaster?\n") or 2)
     if response == "y":
         newToaster = SuperToaster(farbe, schaechte)
     else:

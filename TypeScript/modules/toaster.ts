@@ -15,16 +15,18 @@ export class Toaster {
     constructor(farbe: string, schaechte: number) {
         this.farbe = farbe;
         this.schaechte = schaechte;
+        
     }
 
     // Einfache Methoden
-    toastReintun(anzahl: number): void {
+    toastReintun(anzahl: number): boolean {
         if (anzahl <= this.schaechte) {
             this.anzahlToast = anzahl;
             console.log(`${this.anzahlToast} Toast reingetan.`);
-            
+            return true
         } else {
             console.log("Nicht genug Platz!");
+            return false
         }
     }
 
@@ -37,15 +39,23 @@ export class Toaster {
             // Allerdings ist setInterval nicht Async weshalb andere Teile des Programmes während der Verzögerung weiterlaufen würden.
             // Darum wurde hier setInterval ausgelagert und mit Hilfe von Async Await asynchron gemacht.
             await delay(this.toastZeit * 1000)
-            this.toastZustand = 2;
+            if (this.toastZeit >= 90) {
+                this.toastZustand = 3
+            } else if (this.toastZeit >= 60) {
+                this.toastZustand = 2
+            } else if (this.toastZeit >= 30) {
+                this.toastZustand = 1
+            } else {
+                this.toastZustand = 0
+            }
             console.log(`Fertig. Toast ist: ${toastZustandAlsString(this.toastZustand)}`);
         }
     }
 
     toastAuswerfen(): void {
+        console.log(`${this.anzahlToast} Toast ausgeworfen. Toaster ist nun leer.\n`);
         this.anzahlToast = 0;
         this.toastZustand = 0;
-        console.log(`${this.anzahlToast} Toast ausgeworfen. Toaster ist nun leer.`);
     }
 
     zeitEinstellen(zeit: number): void {
@@ -55,6 +65,14 @@ export class Toaster {
 
     getFarbe(): string {
         return this.farbe;
+    }
+
+    getSchaechte(): number {
+        return this.schaechte;
+    }
+
+    getZeit(): number {
+        return this.toastZeit;
     }
 
 }

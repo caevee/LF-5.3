@@ -2,20 +2,12 @@ from supertoaster import SuperToaster
 from toaster import Toaster
 
 
-#mein_toaster = Toaster("Rot", 2)
-#mein_toaster.zeit_einstellen(5)
-
-#mein_toaster.toast_reintun(2)
-#mein_toaster.toasten()
-#mein_toaster.toast_auswerfen()
-
-# Lul
 toaster = []
 
 def toasterAnlegen():
     response = input("SuperToaster? (y/n)\n").lower()
-    farbe = (input("Welche Farbe hat der Toaster?\n") or "Weiß")
-    schaechte = (input("Wieviele Schächte hat der Toaster?\n") or 2)
+    farbe = input("Welche Farbe hat der Toaster?\n") or "Weiß"
+    schaechte = input("Wieviele Schächte hat der Toaster?\n") or 2
     if response == "y":
         newToaster = SuperToaster(farbe, schaechte)
     else:

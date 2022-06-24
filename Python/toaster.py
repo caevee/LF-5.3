@@ -31,15 +31,15 @@ class Toaster:
         else:
             print("Toasten...")
             sleep(self._toastzeit)
-            if self._toastzeit >= 90:
-                self._toasts_zustand = 3
-            elif self._toastzeit >= 90:
-                self._toasts_zustand = 2
-            elif self._toastzeit >= 90:
-                self._toasts_zustand = 1
-            else:
+            if self._toastzeit == 0:
                 self._toasts_zustand = 0
-            print(f"Fertig. Toast ist: {toast_zustand_als_string(self._toasts_zustand)}");
+            elif self._toastzeit <= 15:
+                self._toasts_zustand = 1
+            elif self._toastzeit > 15:
+                self._toasts_zustand = 2
+            elif self._toastzeit > 30:
+                self._toasts_zustand = 3
+            print(f"Fertig. Toast ist: {toast_zustand_als_string(self._toasts_zustand)}")
 
 
     def toast_auswerfen(self):

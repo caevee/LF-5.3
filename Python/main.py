@@ -24,23 +24,23 @@ def toasterAnlegen():
 
 def toasterEntfernen():
     listToaster()
-    welcherToaster = int(input("Für welchen Toaster?"))
+    welcherToaster = int(input("Für welchen Toaster?\n"))
     toaster.pop(welcherToaster - 1)
 
 def zeitEinstellen():
     listToaster()
-    welcherToaster = int(input("Für welchen Toaster?"))
-    welcheZeit = int(input("Welche Zeit?"))
+    welcherToaster = int(input("Für welchen Toaster?\n"))
+    welcheZeit = int(input("Welche Zeit?\n"))
     toaster[welcherToaster - 1].zeit_einstellen(welcheZeit)
 
 def toastVorgang():
     listToaster()
-    welcherToaster = int(input("Für welchen Toaster?"))
+    welcherToaster = int(input("Für welchen Toaster?\n"))
     if toaster[welcherToaster - 1].get_zeit() == 0:
         print("Bitte erst Zeit einstellen\n")
     else:
         while 1:
-            wievielToast = int(input("Wie viel Toasts?"))
+            wievielToast = int(input("Wie viel Toasts?\n"))
             if not toaster[welcherToaster - 1].toast_reintun(wievielToast):
                 continue
             else:

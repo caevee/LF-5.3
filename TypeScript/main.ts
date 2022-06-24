@@ -30,10 +30,10 @@ function toasterAnlegen(): void {
     let newToaster
     switch(response.toLowerCase()) {
         case "y":
-            newToaster = new Toaster(farbe, +schaechte)
+            newToaster = new SuperToaster(farbe, +schaechte)
             break;
         default:
-            newToaster = new SuperToaster(farbe, +schaechte)
+            newToaster = new Toaster(farbe, +schaechte)
             break;
     }
     toaster.push(newToaster)

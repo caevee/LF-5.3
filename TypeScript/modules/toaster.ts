@@ -39,7 +39,7 @@ export class Toaster {
             // Allerdings ist setInterval nicht Async weshalb andere Teile des Programmes während der Verzögerung weiterlaufen würden.
             // Darum wurde hier setInterval ausgelagert und mit Hilfe von Async Await asynchron gemacht.
             await delay(this.toastZeit * 1000)
-            if (this.toastZeit >= 0) {
+            if (this.toastZeit == 0) {
                 this.toastZustand = 0
             } else if (this.toastZeit <= 15) {
                 this.toastZustand = 1

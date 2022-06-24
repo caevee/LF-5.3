@@ -19,15 +19,19 @@ export class SuperToaster extends Toaster {
         } else {
             console.log("Toasten...");
             await delay(this.toastZeit * 1000)
-            if (this.toastZeit >= 120) {
-                this.toastZustand = 3
-            } else if (this.toastZeit >= 90) {
-                this.toastZustand = 2
-            } else if (this.toastZeit >= 60) {
+            if (this.toastZeit == 0) {
+                this.toastZustand = 0
+            } else if (this.toastZeit <= 15) {
                 this.toastZustand = 1
+            } else if (this.toastZeit > 15) {
+                this.toastZustand = 2
+            } else if (this.toastZeit > 30) {
+                this.toastZustand = 3
             }
-            this.temperatur += 10
+            // Mir fällt nichts besseres ein um eine "Überhitzung" zu simulieren.
+            this.temperatur += (5 * this.toastZeit)
             console.log(`Fertig. Toast ist: ${toastZustandAlsString(this.toastZustand)}`); //toastZustandAlsString() ist eine utility Funktion die ich ausgelagert habe. Mehr dazu siehe util.ts.
+            console.log(`Toastertemperatur beträgt: ${this.temperatur}`);
         }
     }
 }

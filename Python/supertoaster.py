@@ -27,4 +27,7 @@ class SuperToaster(Toaster):
                 self._toasts_zustand = 2
             elif self._toastzeit > 30:
                 self._toasts_zustand = 3
+            # Mir fällt nichts besseres ein um eine "Überhitzung" zu simulieren.
+            self._temperatur += (5 * self._toastzeit)
             print(f"Fertig. Toast ist: {toast_zustand_als_string(self._toasts_zustand)}")
+            print(f"Toastertemperatur beträgt: {self._temperatur}")

@@ -44,8 +44,7 @@ function toasterAnlegen(): void {
 function toasterEntfernen(): void {
     listToaster()
     const welcherToaster = prompt("Für welchen Toaster?")!
-    toaster.splice(+welcherToaster-1, 1);
-    listToaster()
+    toaster.splice(+welcherToaster - 1, 1);
 }
 
 function zeitEinstellen(): void {

@@ -1,5 +1,6 @@
 from time import sleep
 from toaster import Toaster
+from toaster import toast_zustand_als_string
 
 class SuperToaster(Toaster):
 
@@ -16,12 +17,14 @@ class SuperToaster(Toaster):
         elif self._temperatur >= 500:
             print("Breche Vorgang ab. Zu heiß.")
         else:
+            print("Toasten...")
             sleep(self._toastzeit)
-            self._toasts_zustand = 2
-            print("Fertig")
-
-test = SuperToaster("Blau", 3)
-
-test.zeit_einstellen(5)
-test.toast_reintun(2)
-test.toasten()
+            if self._toastzeit >= 90:
+                self._toasts_zustand = 3
+            elif self._toastzeit >= 90:
+                self._toasts_zustand = 2
+            elif self._toastzeit >= 90:
+                self._toasts_zustand = 1
+            else:
+                self._toasts_zustand = 0
+            print(f"Fertig. Toast ist: {toast_zustand_als_string(self._toasts_zustand)}");

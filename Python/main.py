@@ -13,32 +13,53 @@ from toaster import Toaster
 toaster = []
 
 def toasterAnlegen():
-    response = input("SuperToaster? (y/n)").lower()
+    response = input("SuperToaster? (y/n)\n").lower()
     farbe = input("Welche Farbe hat der Toaster?\n")
-    schaechte = input("Wieviele Schächte hat der Toaster?\n")
+    schaechte = int(input("Wieviele Schächte hat der Toaster?\n"))
     if response == "y":
-        newToaster = Toaster(farbe, schaechte)
-    else:
         newToaster = SuperToaster(farbe, schaechte)
+    else:
+        newToaster = Toaster(farbe, schaechte)
     toaster.append(newToaster)
 
 def toasterEntfernen():
-    pass
+    listToaster()
+    welcherToaster = int(input("Für welchen Toaster?"))
+    toaster.pop(welcherToaster - 1)
 
 def zeitEinstellen():
-    pass
+    listToaster()
+    welcherToaster = int(input("Für welchen Toaster?"))
+    welcheZeit = int(input("Welche Zeit?"))
+    toaster[welcherToaster - 1].zeit_einstellen(welcheZeit)
 
-def toasten():
-    pass
+def toastVorgang():
+    listToaster()
+    welcherToaster = int(input("Für welchen Toaster?"))
+    if toaster[welcherToaster - 1].get_zeit() == 0:
+        print("Bitte erst Zeit einstellen\n")
+    else:
+        while 1:
+            wievielToast = int(input("Wie viel Toasts?"))
+            if not toaster[welcherToaster - 1].toast_reintun(wievielToast):
+                continue
+            else:
+                toaster[welcherToaster - 1].toasten()
+                toaster[welcherToaster - 1].toast_auswerfen()
+                break
+
+def listToaster():
+    for i in range(len(toaster)):
+        print(f"Toaster ({i + 1}), Farbe: {toaster[i].get_farbe()}, Schächte: {toaster[i].get_schaechte()}, Zeit: {toaster[i].get_zeit()}");
 
 while 1:
-    userInput = input("Was wollen sie tun?\n\n(1) Toaster anlegen\n(2) Toaster entfernen\n(3) Zeit einstellen\n(4) Toasten\n")
+    userInput = input("\nWas wollen sie tun?\n\n(1) Toaster anlegen\n(2) Toaster entfernen\n(3) Zeit einstellen\n(4) Toasten\n\n")
     if(userInput == "1"):
         toasterAnlegen()
-        print(toaster)
     elif (userInput == "2"):
         toasterEntfernen()
     elif (userInput == "3"):
         zeitEinstellen()
+        toaster[0].get_zeit()
     elif (userInput == "4"):
-        toasten()
+        toastVorgang()
